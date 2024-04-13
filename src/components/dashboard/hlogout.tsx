@@ -5,12 +5,13 @@ import React from 'react';
 
 
 const hlogout = () => {
-const router = useRouter()
-    
+  
+    const router = useRouter()
+
     const HandleLogout  =  async () => {
     const res = await fetch("/api/user/logout")
       if (res.ok){
-        router.push("/")
+        router.replace("/")
       }else{
         console.error("something wrong while login")
       }
