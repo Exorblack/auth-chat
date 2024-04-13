@@ -1,7 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import React from 'react';
-//import useLogout from '@/hooks/useLogout';
 
 const HandleLogout = () => {
   const router = useRouter();
@@ -14,8 +13,6 @@ const HandleLogout = () => {
       console.error("Something went wrong while logging out");
     }
   };
-
-  //const logout = useLogout();
 
   return (
     <div>
