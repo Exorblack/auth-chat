@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Label } from '../ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Hlogout from '@/components/Dashboard/hlogout';
+import Hlogout from '@/components/dashboard/hlogout';
 //import { Input } from '../ui/input';
 
 
