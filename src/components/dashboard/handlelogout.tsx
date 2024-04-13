@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import React from 'react';
 
 
-const dashboard = () => {
+const Dashboard = () => {
     const router = useRouter()
     const handleLogout  =  async () => {
     const res = await fetch("/api/user/logout")
@@ -29,4 +29,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default Dashboard
