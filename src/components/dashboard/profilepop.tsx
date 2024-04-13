@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Label } from '../ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Dashboard from '@/components/Dashboard/Dashboard';
+import Hlogout from '@/components/Dashboard/hlogout';
 //import { Input } from '../ui/input';
 
 
@@ -78,7 +78,7 @@ export function Profilepop() {
               {dataln}
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
-            <Dashboard/>
+            <Hlogout/>
             </div>
           </div>
         </div>

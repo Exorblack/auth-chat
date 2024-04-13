@@ -48,7 +48,7 @@ export function LoginFormDemo() {
     })
   
     if (res.ok){
-      router.push("/Dashboard")
+      router.push("/dashboard")
       toast.success("welcome back",{
         duration: 1000,
       })

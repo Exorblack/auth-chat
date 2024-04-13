@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import React from 'react';
 
 
-const Handlelogout = () => {
+const hlogout = () => {
 const router = useRouter()
     
     const HandleLogout  =  async () => {
@@ -27,4 +27,4 @@ const router = useRouter()
   )
 }
 
-export default Handlelogout
+export default hlogout

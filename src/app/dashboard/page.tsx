@@ -1,7 +1,7 @@
 import ChatInterface from "@/components/chat/ChatInterface"
 import UserList from "@/components/chat/UserList"
 
-const Dashboards = () => {
+const dashboard = () => {
 
   return (
       <>
@@ -25,4 +25,4 @@ const Dashboards = () => {
   );
 }
 
-export default Dashboards;
+export default dashboard;
