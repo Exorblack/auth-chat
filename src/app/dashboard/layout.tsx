@@ -1,5 +1,5 @@
 
-import { Profilepop } from "@/components/dashboard/profilepop";
+import { Profilepop } from "@/components/Dashboard/profilepop";
 
 function DashboardLayout({
     children, 

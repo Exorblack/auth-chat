@@ -22,9 +22,6 @@ const Dashboard = () => {
     <div>
     <Button onClick={handleLogout} variant={"destructive"}> Logout</Button>
     </div>
-   
-    <div>
-    </div>
     </>
   )
 }
