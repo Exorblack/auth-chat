@@ -12,7 +12,7 @@ export function TypewriterEffectSmoothDemo() {
       text: "Great",
     },
     {
-      text: "Bussness",
+      text: "websites",
     },
     {
       text: "with",

@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "sonner";
+import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +30,8 @@ export default function RootLayout({
                 enableSystem
                 disableTransitionOnChange
           >
-          <Toaster />
+          <Toaster richColors position="top-center" />
+
           <main>{children}</main>
 
           </ThemeProvider>

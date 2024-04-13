@@ -11,7 +11,7 @@ import Link from "next/link";
 import {z} from "zod";
 import {SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "../ui/use-toast";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 
@@ -44,8 +44,8 @@ const formschema = z.object({
 export function SignupFormDemo() {
 
   
-  type InputType = z.infer<typeof formschema>
   const router = useRouter()
+  type InputType = z.infer<typeof formschema>
   const saveuser:SubmitHandler<InputType> = async(data)=>{
   
     
@@ -64,18 +64,14 @@ export function SignupFormDemo() {
     })
   
     if (res.ok){
-      router.push('/dashboard')
-      toast({
-        title: "welcome to our shit",
-        description: "welcome mf go fuck yourself",
-        variant: "default"
+      router.push('/auth/login')
+      toast.success("Created Successfully! Now sign In with your account",{
+        duration: 5000,
       })
     }else{
       
-      toast({
-        title: "Error",
-        description: "Oops!! omething wrong while register",
-        variant: "destructive"
+      toast.error("faild",{
+        duration: 2000,
       })
     }
   }
@@ -93,9 +89,9 @@ export function SignupFormDemo() {
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300 pb-2">
         register to Our system for our Business 
       </p>
-      <Link href={"/"}><span className="text-neutral-600 text-xs max-w-sm mt-2 dark:text-neutral-300 hover:underline">
-        Already have an Account
-      </span></Link>
+      <span className="text-neutral-600 text-xs max-w-sm mt-2 dark:text-neutral-300">
+        Already have an Account?
+      </span> <Link href={"/auth/login"}><span className="text-sky-600 hover:underline">Login</span></Link>
       <form className="my-8" onSubmit={handleSubmit(saveuser)}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           

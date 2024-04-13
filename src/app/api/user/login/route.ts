@@ -46,24 +46,28 @@ export async function POST(req: NextRequest) {
             id: user.id,
             username: user.username,
             email: user.email,
-            password: user.password
+            password: user.password,
+            first_name:user.first_name,
+            last_name:user.last_name
         }
 
         const accessToken = jwt.sign(tokenData, process.env.JWT_SECRET!, { expiresIn: '1d' });
 
-        // Set Secure Headers
-        // response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-        // response.headers.set('X-Content-Type-Options', 'nosniff');
-        // response.headers.set('X-Frame-Options', 'DENY');
-        // response.headers.set('X-XSS-Protection', '1; mode=block');
-
+        
         const response = NextResponse.json({
             message: "Login successful",
             success: true,
             accessToken,
             csrfToken
         }, { status: 200 });
+        
+        //Set Secure Headers
+        response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        response.headers.set('X-Content-Type-Options', 'nosniff');
+        response.headers.set('X-Frame-Options', 'DENY');
+        response.headers.set('X-XSS-Protection', '1; mode=block');
 
+        
         // Set Secure Cookies
         response.cookies.set("accessToken", accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
         response.cookies.set("csrfToken", csrfToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });

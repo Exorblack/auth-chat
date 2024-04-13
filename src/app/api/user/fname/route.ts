@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import {Getdata} from "@/tokens/getdatafromtoken";
+import {Getdata, Getdatafn} from "@/tokens/getdatafromtoken";
 import { db } from "@/lib/database/db";
 import { eq } from "drizzle-orm";
 
 
 export async function GET(req:NextRequest) {
     try {
-        const getusername = await Getdata(req)
-        const username = await db.query.Users.findFirst({
-            where: (table) => eq(table.username, getusername)
+        const getusername = await Getdatafn(req)
+        const first_name = await db.query.Users.findFirst({
+            where: (table) => eq(table.first_name, getusername)
         });
 
         return NextResponse.json({
             message:"found",
-            username:username?.username
+            first_name:first_name?.first_name
         })
 
 

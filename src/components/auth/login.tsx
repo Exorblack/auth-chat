@@ -12,7 +12,7 @@ import * as z from "zod";
 
 //import { auth, signIn } from "@/lib/database/auth";
 import { useRouter } from "next/navigation";
-import { toast, useToast } from "@/components/ui/use-toast"
+import { toast } from 'sonner'
 import {SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { generateCsrfToken } from '@/tokens/csrf';
@@ -48,18 +48,14 @@ export function LoginFormDemo() {
     })
   
     if (res.ok){
-      router.push('/dashboard')
-      toast({
-        title: "welcome to our shit",
-        description: "welcome mf go fuck yourself",
-        variant: "default"
+      router.push("/dashboard")
+      toast.success("welcome back",{
+        duration: 1000,
       })
+
     }else{
-      console.error("something wrong while register")
-      toast({
-        title: "Error",
-        description: "Oops!! omething wrong while register",
-        variant: "destructive"
+      toast.error("something wrong while login",{
+        duration: 2000,
       })
     }
     }
@@ -77,9 +73,9 @@ export function LoginFormDemo() {
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300 pb-2">
         Login to Our system for our Business 
       </p>
-      <Link href={"/"}><span className="text-neutral-600 text-xs max-w-sm mt-2 dark:text-neutral-300 hover:underline">
+      <span className="text-neutral-600 text-xs max-w-sm mt-2 dark:text-neutral-300 hover:underline">
         don&apos;t have an Account?
-      </span></Link>
+      </span> <Link href={"/auth/register"}><span className="text-sky-600 hover:underline">Sign Up</span></Link>
 
       <form
        className="my-8"

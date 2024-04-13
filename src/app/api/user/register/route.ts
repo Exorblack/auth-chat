@@ -4,6 +4,9 @@ import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import * as bcrypt from 'bcrypt';
 import * as z from "zod";
+import { generateCsrfToken } from "@/tokens/csrf";
+import jwt from 'jsonwebtoken';
+
 
 
 const reguserschema = z.object({
@@ -49,7 +52,8 @@ export async function POST(req: NextRequest) {
         if (exusername) {
             return NextResponse.json({user:null,message:"username already exist"},{status: 409})
         }
-
+        
+        
         const hashedpass = await bcrypt.hash(password , 10);
         const newuser = await db.insert(Users).values({
             email,
@@ -58,14 +62,15 @@ export async function POST(req: NextRequest) {
             first_name,
             last_name
         })
+
         //const { password: newUserPassword, ...rest} = newuser
-
-       return NextResponse.json({
-        user:newuser,
-        message:"created successfully",
-        success: true
-    },{status:201})
-
+        
+        return  NextResponse.json({
+            user:newuser,
+            message:"created successfully",
+            success: true,
+        },{status:201})
+        
     } catch (error) {
         return NextResponse.json({message:"Something went wrong"},{status:500})
     }
