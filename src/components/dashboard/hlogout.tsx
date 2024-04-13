@@ -11,7 +11,7 @@ const hlogout = () => {
     const HandleLogout  =  async () => {
     const res = await fetch("/api/user/logout")
       if (res.ok){
-        router.replace("/")
+        router.push('/')
       }else{
         console.error("something wrong while login")
       }
