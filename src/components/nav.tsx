@@ -19,18 +19,28 @@ export default function Nav() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/about">
           About
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+          Pricing
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+          Blog
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#">
+          Careers
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link href="/contact" aria-current="page">
           Contact Us
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/">
-          Dashboard
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -46,11 +56,11 @@ export default function Nav() {
       </NavbarContent>
       <NavbarMenu>
           <NavbarMenuItem>
-            <Link className="w-full" href="#" size="lg">About</Link>
-            <Link className="w-full" href="/" size="lg">Dashboard</Link>
+            <Link className="w-full" href="about" size="lg">About</Link>
+            <Link className="w-full" href="/" size="lg">Pricing</Link>
             <Link className="w-full" href="/contact" size="lg">Contact Us</Link>
-            <Link className="w-full" href="#" size="lg">Analytics</Link>
-            <Link className="w-full" href="#" size="lg">Deployments</Link>
+            <Link className="w-full" href="#" size="lg">Blog</Link>
+            <Link className="w-full" href="#" size="lg">Careers</Link>
             <Link className="w-full" href="#" size="lg">System</Link>
           </NavbarMenuItem>
 
