@@ -1,83 +1,62 @@
-// components/ContactForm.tsx
-import React, { useState } from 'react';
+"use client"
+import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
+import { Button } from '../ui/button'; 
 
-interface ContactFormProps {
-  onSubmit: (name: string, email: string, message: string) => void;
-}
-
-const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    // Basic validation (replace with more robust validation)
-    if (!name || !email || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
-
-    onSubmit(name, email, message);
-
-    // Clear form after successful submission
-    setName('');
-    setEmail('');
-    setMessage('');
-  };
-
+const ContactUs = () => {
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <div className="flex flex-col">
-        <label htmlFor="name" className="text-gray-700 font-bold">
-          Name:
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
+    <>
+      <div className="flex justify-center items-center h-screen bg-gradient-to-br from-slate-900 to-slate-950">
+        <div className="bg-slate-950 p-8 rounded-lg max-w-2xl border border-gray-700"> {/* Enhanced shadow on hover */}
+          <div className="flex flex-col space-y-4">
+            <h2 className="text-3xl font-bold text-center text-white mb-4">
+              Contact Us
+            </h2>
+            <p className="text-gray-300 text-center">
+              Feel free to contact us with any questions, feedback, or even just
+              to say hi! We're always happy to hear from you.
+            </p>
+            <form className="space-y-4 w-full px-8 py-6"> 
+              <div className="flex items-center text-gray-300">
+                <FaUser className="mr-2" />
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter your name"
+                  className="block w-full bg-gray-900 text-white border rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div className="flex items-center text-gray-300">
+                <FaEnvelope className="mr-2" />
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  className="block w-full bg-gray-900 text-white border rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+              <div className="flex items-center text-gray-300">
+                <FaComment className="mr-2" />
+                <textarea
+                  id="message"
+                  placeholder="Enter your message"
+                  rows={5}
+                  className="block w-full bg-gray-900 text-white border rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  required
+                />
+              </div>
+              <div className="flex justify-center">
+                <Button type="submit" className="" variant={'outline'}>
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col">
-        <label htmlFor="email" className="text-gray-700 font-bold">
-          Email:
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
-      </div>
-      <div className="flex flex-col">
-        <label htmlFor="message" className="text-gray-700 font-bold">
-          Message:
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 resize-none"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg"
-      >
-        Submit
-      </button>
-    </form>
+    </>
   );
 };
 
-export default ContactForm;
+export default ContactUs;

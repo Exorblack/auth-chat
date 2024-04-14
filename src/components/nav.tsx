@@ -29,7 +29,7 @@ export default function Nav() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/dashboard">
           Dashboard
           </Link>
         </NavbarItem>
@@ -47,7 +47,7 @@ export default function Nav() {
       <NavbarMenu>
           <NavbarMenuItem>
             <Link className="w-full" href="#" size="lg">About</Link>
-            <Link className="w-full" href="#" size="lg">Dashboard</Link>
+            <Link className="w-full" href="/dashboard" size="lg">Dashboard</Link>
             <Link className="w-full" href="/contact" size="lg">Contact Us</Link>
             <Link className="w-full" href="#" size="lg">Analytics</Link>
             <Link className="w-full" href="#" size="lg">Deployments</Link>
