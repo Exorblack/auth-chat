@@ -16,6 +16,7 @@ export function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL('/',req.nextUrl))
     }
 
+
 }
  
 // See "Matching Paths"
@@ -25,5 +26,11 @@ export const config = {
     '/dashboard',
     '/auth/login',
     '/auth/register',
+    '/api/user/logout',
+    '/api/user/login',
+    '/api/user/register',
+    '/api/user/fname',
+    '/api/user/lname',
+    '/api/user/username',
   ]
 }
