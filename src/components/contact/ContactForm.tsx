@@ -13,7 +13,7 @@ const ContactUs = () => {
             </h2>
             <p className="text-gray-300 text-center">
               Feel free to contact us with any questions, feedback, or even just
-              to say hi! We're always happy to hear from you.
+              to say hi! We&apos;re always happy to hear from you.
             </p>
             <form className="space-y-4 w-full px-8 py-6"> 
               <div className="flex items-center text-gray-300">
