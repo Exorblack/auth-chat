@@ -61,7 +61,7 @@ export default function Nav() {
             <Link className="w-full" href="/contact" size="lg">Contact Us</Link>
             <Link className="w-full" href="#" size="lg">Blog</Link>
             <Link className="w-full" href="#" size="lg">Careers</Link>
-            <Link className="w-full" href="#" size="lg">System</Link>
+            <Link className="w-full text-blue-700" href="/auth/login" size="lg">Login</Link>
           </NavbarMenuItem>
 
       </NavbarMenu>
