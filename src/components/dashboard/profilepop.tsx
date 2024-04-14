@@ -5,7 +5,8 @@ import { Button } from '../ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Label } from '../ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Hlogout from '@/components/dashboard/hlogout';
+//import Hlogout from '@/components/dashboard/hlogout';
+import { useRouter } from 'next/navigation';
 //import { Input } from '../ui/input';
 
 
@@ -13,6 +14,18 @@ export function Profilepop() {
   const [data, setData] = useState<string | null>(null);
   const [datafn, setDatafn] = useState<string | null>(null);
   const [dataln, setDataln] = useState<string | null>(null);
+
+
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    const res = await fetch("/api/user/logout");
+    if (res.ok) {
+      router.push('/');
+    } else {
+      console.error("Something went wrong while logging out");
+    }
+  };
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -78,7 +91,9 @@ export function Profilepop() {
               {dataln}
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
-            <Hlogout/>
+            <div>
+      <Button onClick={handleLogout} variant={"destructive"}> Logout</Button>
+    </div>
             </div>
           </div>
         </div>
