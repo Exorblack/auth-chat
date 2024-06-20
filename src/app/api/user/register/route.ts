@@ -1,11 +1,10 @@
 import { db } from "@/lib/database/db";
-import { Users } from "@/lib/database/schema";
+import { Users, users } from "@/lib/database/schema";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import * as bcrypt from 'bcrypt';
 import * as z from "zod";
-import { generateCsrfToken } from "@/tokens/csrf";
-import jwt from 'jsonwebtoken';
+
 
 
 
@@ -40,14 +39,14 @@ export async function POST(req: NextRequest) {
 
         //check if email exist
         const exemail = await db.query.Users.findFirst({
-            where:(table)=>eq(table.email,email),
+            where: eq(Users.email,email)
         })
         if (exemail) {
             return NextResponse.json({user:null,message:"email already exist"},{status: 409})
         }
         //check if username exist
         const exusername = await db.query.Users.findFirst({
-            where:(table)=>eq(table.username,username),
+            where: eq(Users.username,username),
         })
         if (exusername) {
             return NextResponse.json({user:null,message:"username already exist"},{status: 409})

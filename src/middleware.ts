@@ -5,8 +5,8 @@ export function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname
     const islogin = path === "/" || path === "/auth/login" || path === "/auth/register"
 
-    const token = req.cookies.get("accessToken")?.value || ''
-    const csrfToken = req.cookies.get("csrfToken")?.value || ''
+    const token = req.cookies.get("accessToken")?.value
+    const csrfToken = req.cookies.get("csrfToken")?.value
 
     if (islogin && token && csrfToken ) {
         return NextResponse.redirect(new URL('/dashboard',req.nextUrl))
@@ -15,7 +15,6 @@ export function middleware(req: NextRequest) {
     if (!islogin && !token && !csrfToken) {
         return NextResponse.redirect(new URL('/',req.nextUrl))
     }
-
 
 }
  

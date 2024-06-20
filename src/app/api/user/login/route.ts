@@ -1,11 +1,11 @@
 import { db } from "@/lib/database/db";
-//import { Users } from "@/lib/database/schema";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import * as z from "zod";
 import jwt from 'jsonwebtoken';
 import { generateCsrfToken } from '@/tokens/csrf';
+import { Users } from "@/lib/database/schema";
 
 
 const loguserschema = z.object({
@@ -24,8 +24,10 @@ export async function POST(req: NextRequest) {
         const { username, password } = loguserschema.parse(body);
 
         const user = await db.query.Users.findFirst({
-            where:(table)=>eq(table.username,username),
+            where: eq(Users.username,username),
         });
+
+        console.log(user)
         
         if (!username || !password) {
             return NextResponse.json({ message: 'Username and password are required' }, { status: 400 });
@@ -69,8 +71,8 @@ export async function POST(req: NextRequest) {
 
         
         // Set Secure Cookies
-        response.cookies.set("accessToken", accessToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-        response.cookies.set("csrfToken", csrfToken, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        response.cookies.set("accessToken", accessToken, { httpOnly: true, secure: process.env.JWT_SECRET === 'production' });
+        response.cookies.set("csrfToken", csrfToken, { httpOnly: true, secure: process.env.JWT_SECRET === 'production' });
 
         return response;
               

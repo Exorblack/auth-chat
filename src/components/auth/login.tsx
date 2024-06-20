@@ -10,7 +10,6 @@ import {
 import Link from "next/link";
 import * as z from "zod";
 
-//import { auth, signIn } from "@/lib/database/auth";
 import { useRouter } from "next/navigation";
 import { toast } from 'sonner'
 import {SubmitHandler, useForm } from "react-hook-form";
